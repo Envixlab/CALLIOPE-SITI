@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+		<style>
+		#map2{
+			width: 35%;
+            height: 35%;
+            padding: 0;
+			z-index:500;
+			poistion: relative;
+			top: 10px;
+			left: 10px;
+			border-style: solid;
+			border-width: 1px;
+		}
+		</style>
+        <title>SIT CALLIOPE</title>
+    </head>
+    <body>
+        <div id="map">
+        
+		<div id="map2">
+        </div>
+		</div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/RiservanaturalecontrollataPuntadellAcquabella_0.js"></script>
+        <script src="data/RiservanaturalecontrollataRiparidiGiobbe_1.js"></script>
+        <script src="data/TorredelCerrano_2.js"></script>
+        <script src="data/LeccetalitoraneadiTorinodiSangroefocedelFiumeSangro_3.js"></script>
+        <script src="data/MarinadiVasto_4.js"></script>
+        <script src="data/PuntaAderciPuntadellaPenna_5.js"></script>
+		<script src="data/Cipro_6.js"></script>
+        <script>
+
+var map2 = L.map('map2', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[35.05, 32.30],[35.10, 32.60]]);
+L.tileLayer('http://stamen-tiles-a.a.ssl.fastly.net/terrain-background/{z}/{x}/{y}.png', {
+            attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+            maxZoom: 28
+}).addTo(map2);
+
+
+        var map = L.map('map', {
+            zoomControl:false, maxZoom:28, minZoom:1
+        }).fitBounds([[42.02,13.75],[42.67,14.8]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a>');
+		var basemaps = L.tileLayer('http://stamen-tiles-a.a.ssl.fastly.net/terrain-background/{z}/{x}/{y}.png', {
+            attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+            maxZoom: 28
+        });
+        basemaps.addTo(map);
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        function pop_RiservanaturalecontrollataPuntadellAcquabella_0(feature, layer) {
+            var popupContent = '<table>\
+                        <td colspan="2"><strong>Codice</strong><br>' + (feature.properties['codice_are'] !== null ? Autolinker.link(String(feature.properties['codice_are'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Tipologia</strong><br>' + (feature.properties['tipo'] !== null ? Autolinker.link(String(feature.properties['tipo'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Nome ufficiale</strong><br>' + (feature.properties['nome_gazze'] !== null ? Autolinker.link(String(feature.properties['nome_gazze'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Ente gestore</strong><br>' + (feature.properties['ente_gesto'] !== null ? Autolinker.link(String(feature.properties['ente_gesto'])) : '') + '</td>\
+                    </tr>\
+                        <td colspan="2"><strong>Superficie (ha)</strong><br>' + (feature.properties['area_ha'] !== null ? Autolinker.link(String(feature.properties['area_ha'])) : '') + '</td>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_RiservanaturalecontrollataPuntadellAcquabella_0_0() {
+            return {
+                pane: 'pane_RiservanaturalecontrollataPuntadellAcquabella_0',
+                opacity: 1,
+                color: 'rgba(255,51,0,1)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,51,0,0.7)',
+            }
+        }
+        map.createPane('pane_RiservanaturalecontrollataPuntadellAcquabella_0');
+        map.getPane('pane_RiservanaturalecontrollataPuntadellAcquabella_0').style.zIndex = 400;
+        map.getPane('pane_RiservanaturalecontrollataPuntadellAcquabella_0').style['mix-blend-mode'] = 'normal';
+        var layer_RiservanaturalecontrollataPuntadellAcquabella_0 = new L.geoJson(json_RiservanaturalecontrollataPuntadellAcquabella_0, {
+            attribution: '',
+            pane: 'pane_RiservanaturalecontrollataPuntadellAcquabella_0',
+            onEachFeature: pop_RiservanaturalecontrollataPuntadellAcquabella_0,
+            style: style_RiservanaturalecontrollataPuntadellAcquabella_0_0,
+        });
+        bounds_group.addLayer(layer_RiservanaturalecontrollataPuntadellAcquabella_0);
+        map.addLayer(layer_RiservanaturalecontrollataPuntadellAcquabella_0);
+        function pop_RiservanaturalecontrollataRiparidiGiobbe_1(feature, layer) {
+            var popupContent = '<table>\
+                        <td colspan="2"><strong>Codice</strong><br>' + (feature.properties['codice_are'] !== null ? Autolinker.link(String(feature.properties['codice_are'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Tipologia</strong><br>' + (feature.properties['tipo'] !== null ? Autolinker.link(String(feature.properties['tipo'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Nome ufficiale</strong><br>' + (feature.properties['nome_gazze'] !== null ? Autolinker.link(String(feature.properties['nome_gazze'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Ente gestore</strong><br>' + (feature.properties['ente_gesto'] !== null ? Autolinker.link(String(feature.properties['ente_gesto'])) : '') + '</td>\
+                    </tr>\
+                        <td colspan="2"><strong>Superficie (ha)</strong><br>' + (feature.properties['area_ha'] !== null ? Autolinker.link(String(feature.properties['area_ha'])) : '') + '</td>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_RiservanaturalecontrollataRiparidiGiobbe_1_0() {
+            return {
+                pane: 'pane_RiservanaturalecontrollataRiparidiGiobbe_1',
+                opacity: 1,
+                color: 'rgba(255,51,0,1)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,51,0,0.7)',
+            }
+        }
+        map.createPane('pane_RiservanaturalecontrollataRiparidiGiobbe_1');
+        map.getPane('pane_RiservanaturalecontrollataRiparidiGiobbe_1').style.zIndex = 401;
+        map.getPane('pane_RiservanaturalecontrollataRiparidiGiobbe_1').style['mix-blend-mode'] = 'normal';
+        var layer_RiservanaturalecontrollataRiparidiGiobbe_1 = new L.geoJson(json_RiservanaturalecontrollataRiparidiGiobbe_1, {
+            attribution: '',
+            pane: 'pane_RiservanaturalecontrollataRiparidiGiobbe_1',
+            onEachFeature: pop_RiservanaturalecontrollataRiparidiGiobbe_1,
+            style: style_RiservanaturalecontrollataRiparidiGiobbe_1_0,
+        });
+        bounds_group.addLayer(layer_RiservanaturalecontrollataRiparidiGiobbe_1);
+        map.addLayer(layer_RiservanaturalecontrollataRiparidiGiobbe_1);
+        function pop_TorredelCerrano_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Codice</strong><br>' + (feature.properties['codice'] !== null ? Autolinker.link(String(feature.properties['codice'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Tipologia</strong><br>' + (feature.properties['tipo_sito'] !== null ? Autolinker.link(String(feature.properties['tipo_sito'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Denominazione</strong><br>' + (feature.properties['denominazi'] !== null ? Autolinker.link(String(feature.properties['denominazi'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Regione biogeografica</strong><br>' + (feature.properties['reg_biog'] !== null ? Autolinker.link(String(feature.properties['reg_biog'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Regione</strong><br>' + (feature.properties['regione'] !== null ? Autolinker.link(String(feature.properties['regione'])) : '') + '</td>\
+                    </tr>\
+                        <td colspan="2"><strong>Superficie (ha)</strong><br>' + (feature.properties['hectares'] !== null ? Autolinker.link(String(feature.properties['hectares'])) : '') + '</td>\
+                    </tr>\
+                    </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_TorredelCerrano_2_0() {
+            return {
+                pane: 'pane_TorredelCerrano_2',
+                opacity: 1,
+                color: 'rgba(255,51,0,1)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,51,0,0.7)',
+            }
+        }
+        map.createPane('pane_TorredelCerrano_2');
+        map.getPane('pane_TorredelCerrano_2').style.zIndex = 402;
+        map.getPane('pane_TorredelCerrano_2').style['mix-blend-mode'] = 'normal';
+        var layer_TorredelCerrano_2 = new L.geoJson(json_TorredelCerrano_2, {
+            attribution: '',
+            pane: 'pane_TorredelCerrano_2',
+            onEachFeature: pop_TorredelCerrano_2,
+            style: style_TorredelCerrano_2_0,
+        });
+        bounds_group.addLayer(layer_TorredelCerrano_2);
+        map.addLayer(layer_TorredelCerrano_2);
+        function pop_LeccetalitoraneadiTorinodiSangroefocedelFiumeSangro_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Codice</strong><br>' + (feature.properties['codice'] !== null ? Autolinker.link(String(feature.properties['codice'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Tipologia</strong><br>' + (feature.properties['tipo_sito'] !== null ? Autolinker.link(String(feature.properties['tipo_sito'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Denominazione</strong><br>' + (feature.properties['denominazi'] !== null ? Autolinker.link(String(feature.properties['denominazi'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Regione biogeografica</strong><br>' + (feature.properties['reg_biog'] !== null ? Autolinker.link(String(feature.properties['reg_biog'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Regione</strong><br>' + (feature.properties['regione'] !== null ? Autolinker.link(String(feature.properties['regione'])) : '') + '</td>\
+                    </tr>\
+                        <td colspan="2"><strong>Superficie (ha)</strong><br>' + (feature.properties['hectares'] !== null ? Autolinker.link(String(feature.properties['hectares'])) : '') + '</td>\
+                    </tr>\
+                    </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_LeccetalitoraneadiTorinodiSangroefocedelFiumeSangro_3_0() {
+            return {
+                pane: 'pane_LeccetalitoraneadiTorinodiSangroefocedelFiumeSangro_3',
+                opacity: 1,
+                color: 'rgba(255,51,0,1)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,51,0,0.7)',
+            }
+        }
+        map.createPane('pane_LeccetalitoraneadiTorinodiSangroefocedelFiumeSangro_3');
+        map.getPane('pane_LeccetalitoraneadiTorinodiSangroefocedelFiumeSangro_3').style.zIndex = 403;
+        map.getPane('pane_LeccetalitoraneadiTorinodiSangroefocedelFiumeSangro_3').style['mix-blend-mode'] = 'normal';
+        var layer_LeccetalitoraneadiTorinodiSangroefocedelFiumeSangro_3 = new L.geoJson(json_LeccetalitoraneadiTorinodiSangroefocedelFiumeSangro_3, {
+            attribution: '',
+            pane: 'pane_LeccetalitoraneadiTorinodiSangroefocedelFiumeSangro_3',
+            onEachFeature: pop_LeccetalitoraneadiTorinodiSangroefocedelFiumeSangro_3,
+            style: style_LeccetalitoraneadiTorinodiSangroefocedelFiumeSangro_3_0,
+        });
+        bounds_group.addLayer(layer_LeccetalitoraneadiTorinodiSangroefocedelFiumeSangro_3);
+        map.addLayer(layer_LeccetalitoraneadiTorinodiSangroefocedelFiumeSangro_3);
+        function pop_MarinadiVasto_4(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Codice</strong><br>' + (feature.properties['codice'] !== null ? Autolinker.link(String(feature.properties['codice'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Tipologia</strong><br>' + (feature.properties['tipo_sito'] !== null ? Autolinker.link(String(feature.properties['tipo_sito'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Denominazione</strong><br>' + (feature.properties['denominazi'] !== null ? Autolinker.link(String(feature.properties['denominazi'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Regione biogeografica</strong><br>' + (feature.properties['reg_biog'] !== null ? Autolinker.link(String(feature.properties['reg_biog'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Regione</strong><br>' + (feature.properties['regione'] !== null ? Autolinker.link(String(feature.properties['regione'])) : '') + '</td>\
+                    </tr>\
+                        <td colspan="2"><strong>Superficie (ha)</strong><br>' + (feature.properties['hectares'] !== null ? Autolinker.link(String(feature.properties['hectares'])) : '') + '</td>\
+                    </tr>\
+                    </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_MarinadiVasto_4_0() {
+            return {
+                pane: 'pane_MarinadiVasto_4',
+                opacity: 1,
+                color: 'rgba(255,51,0,1)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,51,0,0.7)',
+            }
+        }
+        map.createPane('pane_MarinadiVasto_4');
+        map.getPane('pane_MarinadiVasto_4').style.zIndex = 404;
+        map.getPane('pane_MarinadiVasto_4').style['mix-blend-mode'] = 'normal';
+        var layer_MarinadiVasto_4 = new L.geoJson(json_MarinadiVasto_4, {
+            attribution: '',
+            pane: 'pane_MarinadiVasto_4',
+            onEachFeature: pop_MarinadiVasto_4,
+            style: style_MarinadiVasto_4_0,
+        });
+        bounds_group.addLayer(layer_MarinadiVasto_4);
+        map.addLayer(layer_MarinadiVasto_4);
+        function pop_PuntaAderciPuntadellaPenna_5(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Codice</strong><br>' + (feature.properties['codice'] !== null ? Autolinker.link(String(feature.properties['codice'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Tipologia</strong><br>' + (feature.properties['tipo_sito'] !== null ? Autolinker.link(String(feature.properties['tipo_sito'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Denominazione</strong><br>' + (feature.properties['denominazi'] !== null ? Autolinker.link(String(feature.properties['denominazi'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Regione biogeografica</strong><br>' + (feature.properties['reg_biog'] !== null ? Autolinker.link(String(feature.properties['reg_biog'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Regione</strong><br>' + (feature.properties['regione'] !== null ? Autolinker.link(String(feature.properties['regione'])) : '') + '</td>\
+                    </tr>\
+                        <td colspan="2"><strong>Superficie (ha)</strong><br>' + (feature.properties['hectares'] !== null ? Autolinker.link(String(feature.properties['hectares'])) : '') + '</td>\
+                    </tr>\
+                    </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_PuntaAderciPuntadellaPenna_5_0() {
+            return {
+                pane: 'pane_PuntaAderciPuntadellaPenna_5',
+                opacity: 1,
+                color: 'rgba(255,51,0,0.7)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,51,0,0.7)',
+            }
+        }
+        map.createPane('pane_PuntaAderciPuntadellaPenna_5');
+        map.getPane('pane_PuntaAderciPuntadellaPenna_5').style.zIndex = 405;
+        map.getPane('pane_PuntaAderciPuntadellaPenna_5').style['mix-blend-mode'] = 'normal';
+        var layer_PuntaAderciPuntadellaPenna_5 = new L.geoJson(json_PuntaAderciPuntadellaPenna_5, {
+            attribution: '',
+            pane: 'pane_PuntaAderciPuntadellaPenna_5',
+            onEachFeature: pop_PuntaAderciPuntadellaPenna_5,
+            style: style_PuntaAderciPuntadellaPenna_5_0,
+        });
+        bounds_group.addLayer(layer_PuntaAderciPuntadellaPenna_5);
+        map.addLayer(layer_PuntaAderciPuntadellaPenna_5);
+		
+		/*/cipro/*/
+		function pop_Cipro_6(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Codice</strong><br>' + (feature.properties['sitecode'] !== null ? Autolinker.link(String(feature.properties['sitecode'])) : '') + '</td>\
+                    </tr>\
+					<tr>\
+                        <td colspan="2"><strong>Tipologia</strong><br>' + (feature.properties['sitetype'] !== null ? Autolinker.link(String(feature.properties['sitetype'])) : '') + '</td>\
+                    </tr>\
+					<tr>\
+                        <td colspan="2"><strong>Denominazione</strong><br>' + (feature.properties['sitename'] !== null ? Autolinker.link(String(feature.properties['sitename'])) : '') + '</td>\
+                    </tr>\
+                    </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Cipro_6_0() {
+            return {
+                pane: 'pane_Cipro_6',
+                opacity: 1,
+                color: 'rgba(255,51,0,1)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,51,0,0.7)',
+            }
+        }
+        map2.createPane('pane_Cipro_6');
+        map2.getPane('pane_Cipro_6').style.zIndex = 501;
+        map2.getPane('pane_Cipro_6').style['mix-blend-mode'] = 'normal';
+        var layer_Cipro_6 = new L.geoJson(json_Cipro_6, {
+            attribution: '',
+            pane: 'pane_Cipro_6',
+            onEachFeature: pop_Cipro_6,
+            style: style_Cipro_6_0,
+        }).addTo(map2);
+		
+        /*/bounds_group.addLayer(layer_Cipro_6);
+        map.addLayer(layer_Cipro_6);/*/
+/*/fine cipro /*/	
+		
+		var title = new L.Control();
+        title.onAdd = function (map) {
+            this._div = L.DomUtil.create('div', 'info');
+            this.update();
+            return this._div;
+        };
+        title.update = function () {
+            this._div.innerHTML = '<a href=../index.html style="text-decoration:none"><h2>SIT CALLIOPE - Le aree di progetto</h2></a>';
+        };
+        title.addTo(map);
+		
+		/*/var title2 = new L.Control();
+        title2.onAdd = function (map) {
+            this._div = L.DomUtil.create('div', 'info');
+            this.update();
+            return this._div;
+        };
+        title2.update = function () {
+            this._div.innerHTML = '<h4>CIPRO</h4>';
+        };
+        title2.addTo(map2);*/
+		
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'<b>ZSC - Zone Speciali di Conservazione</b>':layer_MarinadiVasto_4,'<img src="legend/PuntaAderciPuntadellaPenna_5.png" /> Punta Aderci - Punta della Penna': layer_PuntaAderciPuntadellaPenna_5,'<img src="legend/MarinadiVasto_4.png" /> Marina di Vasto': layer_MarinadiVasto_4,'<img src="legend/LeccetalitoraneadiTorinodiSangroefocedelFiumeSangro_3.png" /> Lecceta litoranea di Torino di Sangro e foce del Fiume Sangro': layer_LeccetalitoraneadiTorinodiSangroefocedelFiumeSangro_3,'<img src="legend/TorredelCerrano_2.png" /> Torre del Cerrano<br><hr style= "border-top: dashed 1px #33cccc"><b>RNR - Riserve Naturali Regionali</b>': layer_TorredelCerrano_2,'<img src="legend/RiservanaturalecontrollataRiparidiGiobbe_1.png" /> Riserva naturale controllata Ripari di Giobbe': layer_RiservanaturalecontrollataRiparidiGiobbe_1,'<img src="legend/RiservanaturalecontrollataPuntadellAcquabella_0.png" /> Riserva naturale controllata Punta dell\'Acquabella': layer_RiservanaturalecontrollataPuntadellAcquabella_0},{collapsed:false}).addTo(map);
+		
+		L.control.layers(baseMaps,{'<img src="legend/RiservanaturalecontrollataPuntadellAcquabella_0.png" /> Periochi Polis - Gialia': layer_Cipro_6},{collapsed:false}).addTo(map2);
+		
+		var zoomControl = L.control.zoom({position: 'bottomright'});
+        map.addControl(zoomControl);
+		L.control.scale().addTo(map);
+		L.control.scale().addTo(map2);
+		
+        </script>
+    </body>
+</html>
